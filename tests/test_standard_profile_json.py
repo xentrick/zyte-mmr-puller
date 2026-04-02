@@ -130,6 +130,56 @@ class TestStandardProfileJson(unittest.TestCase):
         profile = StandardProfile.model_validate(payload)
         self.assertEqual(profile.data.segments[0].metadata.name, "Ranked Doubles 2v2")
 
+    def test_peak_rank_games_played_from_matches_played(self) -> None:
+        payload = {
+            "data": {
+                "availableSegments": [],
+                "expiryDate": "2026-04-02T00:00:00+00:00",
+                "metadata": {
+                    "currentSeason": 35,
+                    "lastUpdated": {
+                        "displayValue": "2026-04-02T00:00:00+00:00",
+                        "value": "2026-04-02T00:00:00+00:00",
+                    },
+                    "playerId": 123,
+                },
+                "platformInfo": {
+                    "platformSlug": "steam",
+                    "platformUserHandle": "example",
+                    "platformUserId": "1",
+                    "platformUserIdentifier": "example",
+                },
+                "segments": [
+                    {
+                        "attributes": {"playlistId": 13, "season": 35},
+                        "expiryDate": "0001-01-01T00:00:00+00:00",
+                        "metadata": {"name": "Ranked Standard 3v3"},
+                        "stats": {
+                            "peakRating": {
+                                "displayValue": "1200",
+                                "metadata": {
+                                    "name": "Champion I",
+                                    "division": "Division I",
+                                },
+                                "value": 1200,
+                            },
+                            "matchesPlayed": {
+                                "displayValue": "33",
+                                "value": 33,
+                            },
+                        },
+                        "type": "peak-rating",
+                    }
+                ],
+            }
+        }
+
+        profile = StandardProfile.model_validate(payload)
+        parsed = ZyteMMRPuller.parse_peak_rank_by_season(profile)
+
+        self.assertEqual(parsed[35][0]["games_played"], 33)
+        self.assertEqual(parsed[35][0]["games_played_display"], "33")
+
 
 if __name__ == "__main__":
     unittest.main()

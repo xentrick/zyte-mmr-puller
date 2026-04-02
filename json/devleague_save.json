@@ -1,0 +1,22 @@
+{
+    "from_api": false,
+    "tracker_link": {
+        "link": "https://rocketleague.tracker.network/rocket-league/profile/steam/nickm/overview"
+    },
+    "threes_rating": 1395,
+    "threes_games_played": 16,
+    "threes_season_peak": 1395,
+    "twos_rating": 1435,
+    "twos_games_played": 44,
+    "twos_season_peak": 1443,
+    "ones_rating": 919,
+    "ones_games_played": 4,
+    "ones_season_peak": 919,
+    "notes": "",
+    "date_pulled": "2026-04-02T16:51:59.416Z",
+    "psyonix_season": 36,
+    "platform": "steam",
+    "user_id": "nickm",
+    "pulled_by": "tehblister",
+    "status": null
+}

@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Peaks (steam 76561197960409023)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "zyte",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "peaks",
+        "https://api.tracker.gg/api/v2/rocket-league/standard/profile/steam/76561197960409023/",
+        "--debug"
+      ]
+    },
+    {
+      "name": "Debug Post Next Peaks (dry-run, async, limit 1)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "zyte",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": ["post-next-peaks", "--async", "--dry-run", "--limit", "5"]
+    },
+    {
+      "name": "Debug Post Next Peaks (dry-run, async, limit 1) Specific",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "zyte",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "args": [
+        "post-next-peaks",
+        "--async",
+        "--use-recent-season-peaks",
+        "--window",
+        "3",
+        "--tracker-source",
+        "devleague",
+        "--dry-run",
+        "--limit",
+        "1"
+      ]
+    }
+  ]
+}
