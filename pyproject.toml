@@ -1,0 +1,10 @@
+[project]
+name = "zyte-mmr-puller"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.11.3", "zyte-api>=0.9.0"]
+
+[dependency-groups]
+dev = ["python-dotenv>=1.2.2"]
